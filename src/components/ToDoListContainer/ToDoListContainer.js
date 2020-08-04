@@ -17,7 +17,7 @@ class ToDoListContainer extends React.Component {
     this.state = {};
   }
 
-  componentWillMount() {
+  componentDidMount() {
     requestItem({
       method: "get",
     }).then((dataList) => {
