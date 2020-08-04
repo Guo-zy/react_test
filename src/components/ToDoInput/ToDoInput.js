@@ -1,5 +1,5 @@
 import React from "react";
-
+import { insertItem } from "../../network/index";
 
 class ToDoInput extends React.Component {
   constructor(props) {
@@ -14,11 +14,24 @@ class ToDoInput extends React.Component {
       inputValue: value,
     }));
   };
-  handleInputSub = () => {
-      this.setState({
-        inputValue: "",
-      });
 
+  handleInputSub = () => {
+    if (this.state.inputValue === "") return null;
+    const content = this.state.inputValue;
+    insertItem({
+      method: "post",
+      data: {
+        content,
+        state: false,
+      },
+    }).then((returnValue) => {
+      this.props.addAction(returnValue.data);
+      alert("添加成功")
+    });
+
+    this.setState({
+      inputValue: "",
+    });
   };
 
   render() {

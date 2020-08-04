@@ -19,7 +19,6 @@ class ToDoListContainer extends React.Component {
   componentWillMount() {
     requestItem({
       method: "get",
-      url: "/todos",
     }).then((dataList) => {
       for (const data of dataList.data) {
         this.props.addAction(data);
