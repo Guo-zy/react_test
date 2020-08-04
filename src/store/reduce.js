@@ -7,7 +7,7 @@ const defaultState = {
 
 export default createReducer(defaultState, {
   [ADDITEM]: (state, action) => ({
-    list: [...state.list, { inputValue: action.payload, done: false }],
+    list: [...state.list, { content: action.payload.content, status: action.payload.status }],
   }),
   [DELETEITEM]: (state, action) => ({
     list: state.list.filter((item, index) => index !== action.payload),
@@ -16,8 +16,8 @@ export default createReducer(defaultState, {
     list: state.list.map((item, index) => {
       if (index === action.payload) {
         return {
-          inputValue: item.inputValue,
-          done: !item.done,
+          content: item.content,
+          status: !item.status,
         };
       }
       return item;

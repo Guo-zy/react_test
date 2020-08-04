@@ -1,4 +1,5 @@
 import React from "react";
+import request, { requestShop } from "../../network/index";
 
 class ToDoInput extends React.Component {
   constructor(props) {
@@ -14,12 +15,18 @@ class ToDoInput extends React.Component {
     }));
   };
   handleInputSub = () => {
-    if (this.state.inputValue !== "") {
-      this.props.addAction(this.state.inputValue);
       this.setState({
         inputValue: "",
       });
-    } else alert("input should not be null");
+      requestShop({
+        url: "/todos",
+      }).then((dataList) => {
+        for (const data of dataList.data) {
+          this.props.addAction(data);
+        }
+       
+      });
+
   };
 
   render() {
@@ -32,7 +39,7 @@ class ToDoInput extends React.Component {
             value={this.state.inputValue}
             onChange={this.handleInputChange}
           />
-          <button onClick={this.handleInputSub}> 提交 </button>
+          <button onClick={this.handleInputSub}> 查询 </button>
         </label>
       </div>
     );

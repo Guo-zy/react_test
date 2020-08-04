@@ -11,12 +11,13 @@ class ToDoList extends Component {
     this.props.deleteAction(index);
   };
   getToDoItem = () => {
+    console.log(this.props.list)
     return this.props.list.map((item, index) => (
       <ToDoItem
         key={index}
-        content={item.inputValue}
+        content={item.content}
         index={index}
-        done = {item.done}
+        status = {item.status}
         deleteItem={this.handleInputDelete}
         markAction={this.props.markAction}
       />

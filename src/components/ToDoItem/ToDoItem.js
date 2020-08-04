@@ -12,7 +12,7 @@ class ToDoItem extends Component {
     return (
       <div>
         <span
-          style={{ textDecorationLine: this.props.done ? "line-through" : "none" }}
+          style={{ textDecorationLine: this.props.status ? "line-through" : "none" }}
           onClick = {this.handleMark}
         >
           {content}
