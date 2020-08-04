@@ -1,10 +1,14 @@
-import React from 'react';
+import React from "react";
 import ToDoListContainer from "./components/ToDoListContainer/ToDoListContainer";
-
+import { HashRouter, Route } from "react-router-dom";
+import ToDoFinish from "./components/ToDoFinish/ToDoFinish";
 function App() {
   return (
     <div className="App">
-      <ToDoListContainer/>
+      <HashRouter>
+        <Route exact path="/" component={ToDoListContainer}></Route>
+        <Route path="/finished" component={ToDoFinish}></Route>
+      </HashRouter>
     </div>
   );
 }

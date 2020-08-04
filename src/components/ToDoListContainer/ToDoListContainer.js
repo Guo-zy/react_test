@@ -1,5 +1,6 @@
 import ToDoInput from "../ToDoInput/ToDoInput";
 import ToDoList from "../ToDoList/ToDoList";
+import Menu from "../Menu/Menu"
 import React from "react";
 import { connect } from "react-redux";
 import { addAction, deleteAction, markAction } from "../../store/actionCreators";
@@ -14,6 +15,7 @@ class ToDoListContainer extends React.Component {
   render() {
     return (
       <div>
+        <Menu/>
         <ToDoInput addAction={this.props.addAction} />
         <ToDoList
           list={this.props.list}
