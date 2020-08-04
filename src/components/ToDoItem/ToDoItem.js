@@ -25,9 +25,13 @@ class ToDoItem extends Component {
 
   handleMark = () => {
     const id = this.props.index;
+    const status = !this.props.status;
     modifyItemStatus({
       method :'put',
-      url:id
+      url:id,
+      data:{
+        status
+      }
     })
     this.props.markAction(this.props.index)
   };
