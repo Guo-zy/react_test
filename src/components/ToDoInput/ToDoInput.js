@@ -1,5 +1,5 @@
 import React from "react";
-import request, { requestShop } from "../../network/index";
+
 
 class ToDoInput extends React.Component {
   constructor(props) {
@@ -17,14 +17,6 @@ class ToDoInput extends React.Component {
   handleInputSub = () => {
       this.setState({
         inputValue: "",
-      });
-      requestShop({
-        url: "/todos",
-      }).then((dataList) => {
-        for (const data of dataList.data) {
-          this.props.addAction(data);
-        }
-       
       });
 
   };

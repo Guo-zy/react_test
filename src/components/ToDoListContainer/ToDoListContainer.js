@@ -1,10 +1,14 @@
 import ToDoInput from "../ToDoInput/ToDoInput";
 import ToDoList from "../ToDoList/ToDoList";
-import Menu from "../Menu/Menu"
+import Menu from "../Menu/Menu";
 import React from "react";
 import { connect } from "react-redux";
-import { addAction, deleteAction, markAction } from "../../store/actionCreators";
-
+import {
+  addAction,
+  deleteAction,
+  markAction,
+} from "../../store/actionCreators";
+import { requestItem } from "../../network/index";
 class ToDoListContainer extends React.Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
@@ -12,15 +16,25 @@ class ToDoListContainer extends React.Component {
     this.state = {};
   }
 
+  componentWillMount() {
+    requestItem({
+      method: "get",
+      url: "/todos",
+    }).then((dataList) => {
+      for (const data of dataList.data) {
+        this.props.addAction(data);
+      }
+    });
+  }
   render() {
     return (
       <div>
-        <Menu/>
+        <Menu />
         <ToDoInput addAction={this.props.addAction} />
         <ToDoList
           list={this.props.list}
           deleteAction={this.props.deleteAction}
-          markAction = {this.props.markAction}
+          markAction={this.props.markAction}
         />
       </div>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {modifyItemStatus} from "../../network/index"
 
 class ToDoItem extends Component {
   // eslint-disable-next-line no-useless-constructor
@@ -23,6 +24,11 @@ class ToDoItem extends Component {
   }
 
   handleMark = () => {
+    const id = this.props.index;
+    modifyItemStatus({
+      method :'put',
+      url:id
+    })
     this.props.markAction(this.props.index)
   };
 

@@ -2,15 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import Menu from "../Menu/Menu";
 class ToDoFinish extends React.Component {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
-    console.log(props);
   }
   getDoneItem = () => {
     return this.props.list.map((item, index) => {
-      if (item.done) {
-        return <p>{item.inputValue}</p>;
+      if (item.status) {
+        return <p key ={index}>{item.content}</p>;
       }
+      return null;
     });
   };
   render() {
