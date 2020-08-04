@@ -9,8 +9,8 @@ export const addAction = createAction(ADDITEM, (dataList) => ({
   },
 })); 
 
-export const deleteAction = createAction(DELETEITEM, (index) => ({
-  payload: index,
+export const deleteAction = createAction(DELETEITEM, (id) => ({
+  payload: id,
 }));
 
-export const markAction = createAction(MAREITEM, (index) => ({ payload: index }));
+export const markAction = createAction(MAREITEM, (id) => ({ payload: id }));

@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from "react";
 import ToDoItem from "../ToDoItem/ToDoItem";
+import {deleteItem} from "../../network/index"
 
 class ToDoList extends Component {
   // eslint-disable-next-line no-useless-constructor
@@ -8,6 +9,10 @@ class ToDoList extends Component {
   }
 
   handleInputDelete = (index) => {
+    deleteItem({
+      method:'delete',
+      url : index
+    })
     this.props.deleteAction(index);
   };
   getToDoItem = () => {

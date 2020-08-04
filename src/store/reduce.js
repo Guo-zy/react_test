@@ -10,10 +10,10 @@ export default createReducer(defaultState, {
     list: [...state.list, { id : action.payload.id , content: action.payload.content, status: action.payload.status }],
   }),
   [DELETEITEM]: (state, action) => ({
-    list: state.list.filter((item, index) => index !== action.payload),
+    list: state.list.filter((item) => item.id !== action.payload),
   }),
   [MAREITEM]: (state, action) => ({
-    list: state.list.map((item, index) => {
+    list: state.list.map((item) => {
       if (action.payload === item.id) {
         return {
           id:item.id,
