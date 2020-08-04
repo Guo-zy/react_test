@@ -7,6 +7,7 @@ import {
   addAction,
   deleteAction,
   markAction,
+  getAllItemAction
 } from "../../store/actionCreators";
 import { requestItem } from "../../network/index";
 class ToDoListContainer extends React.Component {
@@ -20,9 +21,7 @@ class ToDoListContainer extends React.Component {
     requestItem({
       method: "get",
     }).then((dataList) => {
-      for (const data of dataList.data) {
-        this.props.addAction(data);
-      }
+        this.props.getAllItemAction(dataList.data)
     });
   }
   render() {
@@ -46,6 +45,7 @@ const mapDispatchToProps = {
   addAction,
   deleteAction,
   markAction,
+  getAllItemAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoListContainer);
