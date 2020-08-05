@@ -10,9 +10,9 @@ class ToDoList extends Component {
         bordered
         dataSource={this.props.list}
         renderItem={(item) => (
-          <List.Item>
+          <List.Item  >
             <ToDoItem
-              key={item.id}
+              key={item.id}   
               item={item}
               deleteAction={this.props.deleteAction}
               markAction={this.props.markAction}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { requestAPI } from "../../network/index";
+import { Button } from "antd";
 class ToDoItem extends Component {
   render() {
     const { content } = this.props.item;
@@ -15,7 +16,14 @@ class ToDoItem extends Component {
         >
           {content}
         </span>
-        <button onClick={this.handleDelete}>delete</button>
+
+        <Button
+          type="danger"
+          style={{ position: "absolute", right: "10px", marginTop: "-5px" ,borderRadius:"20px"}}
+          onClick={this.handleDelete}
+        >
+          delete
+        </Button>
       </div>
     );
   }

@@ -21,7 +21,7 @@ class ToDoFinish extends React.Component {
     return (
       <div>
         <Menu />
-        <p>已完成的任务</p>
+        <p style={{ fontSize: "25px" , textAlign:"center" }}>Finished List</p>
         {this.getDoneItem()}
       </div>
     );
