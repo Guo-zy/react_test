@@ -28,18 +28,17 @@ class ToDoListContainer extends React.Component {
     return (
       <div>
         <Menu />
-        <Layout style={{ textAlign: "center" }}>
+        <Layout style={{ textAlign: "center", background: "#fff" }}>
           <Content>
-            <p style ={{fontSize:"25px"}}>ToDoList</p>
+            <p style={{ fontSize: "25px" }}>ToDoList</p>
             <ToDoInput addAction={this.props.addAction} />
           </Content>
-          <Footer>
-            <ToDoList
-              list={this.props.list}
-              deleteAction={this.props.deleteAction}
-              markAction={this.props.markAction}
-            />
-          </Footer>
+
+          <ToDoList
+            list={this.props.list}
+            deleteAction={this.props.deleteAction}
+            markAction={this.props.markAction}
+          />
         </Layout>
       </div>
     );
