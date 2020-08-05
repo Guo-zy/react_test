@@ -11,6 +11,7 @@ class ToDoItem extends Component {
             textDecorationLine: this.props.item.status
               ? "line-through"
               : "none",
+            cursor: "pointer",
           }}
           onClick={this.handleMark}
         >
@@ -19,7 +20,12 @@ class ToDoItem extends Component {
 
         <Button
           type="danger"
-          style={{ position: "absolute", right: "10px", marginTop: "-5px" ,borderRadius:"20px"}}
+          style={{
+            position: "absolute",
+            right: "10px",
+            marginTop: "-5px",
+            borderRadius: "20px",
+          }}
           onClick={this.handleDelete}
         >
           delete
