@@ -10,6 +10,8 @@ import {
   getAllItemAction,
 } from "../../store/actionCreators";
 import { requestAPI } from "../../network/index";
+import { Layout } from "antd";
+const { Footer, Content } = Layout;
 class ToDoListContainer extends React.Component {
   componentDidMount() {
     requestAPI({
@@ -26,12 +28,19 @@ class ToDoListContainer extends React.Component {
     return (
       <div>
         <Menu />
-        <ToDoInput addAction={this.props.addAction} />
-        <ToDoList
-          list={this.props.list}
-          deleteAction={this.props.deleteAction}
-          markAction={this.props.markAction}
-        />
+        <Layout style={{ textAlign: "center" }}>
+          <Content>
+            <p style ={{fontSize:"25px"}}>ToDoList</p>
+            <ToDoInput addAction={this.props.addAction} />
+          </Content>
+          <Footer>
+            <ToDoList
+              list={this.props.list}
+              deleteAction={this.props.deleteAction}
+              markAction={this.props.markAction}
+            />
+          </Footer>
+        </Layout>
       </div>
     );
   }

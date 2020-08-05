@@ -8,10 +8,8 @@ import 'antd/dist/antd.css';
 //JSX语法
 //要引用react来解析JSX语法
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store ={store}>
     <App/>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );

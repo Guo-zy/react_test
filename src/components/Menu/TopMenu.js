@@ -28,6 +28,7 @@ class TopMenu extends React.Component {
         <Menu.Item key="Finished">
           <Link to="/finished">Finished</Link>
         </Menu.Item>
+
       </Menu>
     );
   }
