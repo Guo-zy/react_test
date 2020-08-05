@@ -1,6 +1,7 @@
 import React from "react";
 import { requestAPI } from "../../network/index";
-
+import { Input } from 'antd';
+const { Search } = Input;
 class ToDoInput extends React.Component {
   constructor(props) {
     super(props);
@@ -46,12 +47,21 @@ class ToDoInput extends React.Component {
       <div>
         <label htmlFor="insertArea">
           输入内容
-          <input
+          <Search
+            placeholder="input should not be null"
+            enterButton="Add"
+            size="small"
+            value={this.state.inputValue}
+            onChange={this.handleInputChange}
+            onSearch={value => console.log(value)}
+            allowClear = "true"
+           />
+          {/* <input
             id="insertArea"
             value={this.state.inputValue}
             onChange={this.handleInputChange}
           />
-          <button onClick={this.handleInputSub}> ADD </button>
+          <button onClick={this.handleInputSub}> ADD </button> */}
         </label>
       </div>
     );
