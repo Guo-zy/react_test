@@ -3,17 +3,16 @@ import { Link } from "react-router-dom";
 import { Menu } from "antd";
 
 class TopMenu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      current: "All",
-    };
-  }
-  handleClick = (e) => {
+  state = {
+    current: "All",
+  };
+  handleClick = e => {
+    console.log('click ', e);
     this.setState({
       current: e.key,
     });
-  }
+  };
+
 
   render() {
     return (
@@ -28,8 +27,8 @@ class TopMenu extends React.Component {
         <Menu.Item key="Finished">
           <Link to="/finished">Finished</Link>
         </Menu.Item>
-
       </Menu>
+  
     );
   }
 }

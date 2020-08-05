@@ -5,7 +5,7 @@ import ToDoList from "../ToDoList/ToDoList";
 import {
   deleteAction,
   markAction,
-} from "../../store/actionCreators";
+} from "../../store/action/actionCreators";
 class ToDoFinish extends React.Component {
   getDoneItem = () => {
     const doneList = this.props.list.filter((item) => item.status);

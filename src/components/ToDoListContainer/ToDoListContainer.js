@@ -8,10 +8,10 @@ import {
   deleteAction,
   markAction,
   getAllItemAction,
-} from "../../store/actionCreators";
+} from "../../store/action/actionCreators";
 import { requestAPI } from "../../network/index";
 import { Layout } from "antd";
-const { Footer, Content } = Layout;
+const { Content } = Layout;
 class ToDoListContainer extends React.Component {
   componentDidMount() {
     requestAPI({
@@ -33,11 +33,11 @@ class ToDoListContainer extends React.Component {
             <p style={{ fontSize: "25px" }}>ToDoList</p>
             <ToDoInput addAction={this.props.addAction} />
           </Content>
-
           <ToDoList
             list={this.props.list}
             deleteAction={this.props.deleteAction}
             markAction={this.props.markAction}
+            loading = {this.props.loading}
           />
         </Layout>
       </div>
@@ -45,7 +45,10 @@ class ToDoListContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => state.itemList;
+const mapStateToProps = (state) => ({
+  list : state.toDo.list,
+  loading : state.loadToggle.loading
+});
 
 const mapDispatchToProps = {
   addAction,

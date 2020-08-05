@@ -1,10 +1,11 @@
 import React, { Fragment, Component } from "react";
 import ToDoItem from "../ToDoItem/ToDoItem";
-import { List, Typography } from "antd";
+import { List , Spin} from "antd";
 
 class ToDoList extends Component {
   getToDoItem = () => {
     return (
+      <Spin spinning = {this.props.loading}>
       <List
         style={{ width: "50%", margin: "10px auto" }}
         bordered
@@ -20,6 +21,7 @@ class ToDoList extends Component {
           </List.Item>
         )}
       />
+      </Spin>
     );
   };
   render() {

@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { ADDITEM, DELETEITEM, MAREITEM, GETALLITEM } from "./actionTypes";
+import { ADDITEM, DELETEITEM, MAREITEM, GETALLITEM } from "../action/actionTypes";
 
 const defaultState = {
   list: [],

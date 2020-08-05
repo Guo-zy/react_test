@@ -1,4 +1,9 @@
-import { ADDITEM, DELETEITEM, MAREITEM, GETALLITEM } from "./actionTypes";
+import {
+  ADDITEM,
+  DELETEITEM,
+  MAREITEM,
+  GETALLITEM,
+} from "./actionTypes";
 import { createAction } from "@reduxjs/toolkit";
 
 export const addAction = createAction(ADDITEM, (item) => ({

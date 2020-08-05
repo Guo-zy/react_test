@@ -1,10 +1,12 @@
 import { createStore } from "redux";
-import reducer from "./reduce";
+import ToDoReduce from "./reducer/ToDoReduce";
+import LoadReduce from "./reducer/LoadReduce"
 import { combineReducers } from "redux";
 
 const store = createStore(
   combineReducers({
-    itemList: reducer,
+    toDo: ToDoReduce,
+    loadToggle : LoadReduce
   })
 );
 
