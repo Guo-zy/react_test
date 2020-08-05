@@ -7,22 +7,20 @@ import {
   addAction,
   deleteAction,
   markAction,
-  getAllItemAction
+  getAllItemAction,
 } from "../../store/actionCreators";
-import { requestItem } from "../../network/index";
+import { requestAPI } from "../../network/index";
 class ToDoListContainer extends React.Component {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   componentDidMount() {
-    requestItem({
+    requestAPI({
       method: "get",
-    }).then((dataList) => {
-        this.props.getAllItemAction(dataList.data)
-    });
+    })
+      .then((dataList) => {
+        this.props.getAllItemAction(dataList.data);
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
   render() {
     return (
@@ -45,7 +43,7 @@ const mapDispatchToProps = {
   addAction,
   deleteAction,
   markAction,
-  getAllItemAction
+  getAllItemAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoListContainer);

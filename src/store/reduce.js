@@ -5,19 +5,20 @@ const defaultState = {
   list: [],
 };
 
+//TODO
 export default createReducer(defaultState, {
   [GETALLITEM]: (state, action) => ({
-    list: action.payload
+    list: action.payload,
   }),
   [ADDITEM]: (state, action) => ({
-    list: [...state.list, { id: action.payload.id, content: action.payload.content, status: action.payload.status }],
+    list: [action.payload,...state.list,],
   }),
   [DELETEITEM]: (state, action) => ({
-    list: state.list.filter((item) => item.id !== action.payload),
+    list: state.list.filter((item) => item.id !== action.payload.id),
   }),
   [MAREITEM]: (state, action) => ({
     list: state.list.map((item) => {
-      if (action.payload === item.id) {
+      if (action.payload.id === item.id) {
         return {
           id: item.id,
           content: item.content,

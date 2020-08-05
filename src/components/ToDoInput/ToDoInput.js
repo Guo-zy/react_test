@@ -1,5 +1,5 @@
 import React from "react";
-import { insertItem } from "../../network/index";
+import { requestAPI } from "../../network/index";
 
 class ToDoInput extends React.Component {
   constructor(props) {
@@ -16,22 +16,29 @@ class ToDoInput extends React.Component {
   };
 
   handleInputSub = () => {
-    if (this.state.inputValue === "") return null;
+    //TODO
+    if (this.state.inputValue === "") {
+      alert("input should not be null");
+      return null;
+    }
     const content = this.state.inputValue;
-    insertItem({
+    requestAPI({
       method: "post",
       data: {
         content,
         state: false,
       },
-    }).then((returnValue) => {
-      this.props.addAction(returnValue.data);
-      alert("添加成功")
-    });
-
-    this.setState({
-      inputValue: "",
-    });
+    })
+      .then((returnValue) => {
+        this.props.addAction(returnValue.data);
+        alert("添加成功");
+        this.setState({
+          inputValue: "",
+        });
+      })
+      .catch((err) => {
+        alert(err);
+      });
   };
 
   render() {
@@ -44,7 +51,7 @@ class ToDoInput extends React.Component {
             value={this.state.inputValue}
             onChange={this.handleInputChange}
           />
-          <button onClick={this.handleInputSub}> 查询 </button>
+          <button onClick={this.handleInputSub}> ADD </button>
         </label>
       </div>
     );

@@ -1,20 +1,17 @@
 import React, { Component } from "react";
-import {modifyItemStatus} from "../../network/index"
-
+import { requestAPI } from "../../network/index";
 class ToDoItem extends Component {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(props) {
-    super(props);
-
-  }
-
   render() {
-    const { content } = this.props;
+    const { content } = this.props.item;
     return (
       <div>
         <span
-          style={{ textDecorationLine: this.props.status ? "line-through" : "none" }}
-          onClick = {this.handleMark}
+          style={{
+            textDecorationLine: this.props.item.status
+              ? "line-through"
+              : "none",
+          }}
+          onClick={this.handleMark}
         >
           {content}
         </span>
@@ -24,21 +21,30 @@ class ToDoItem extends Component {
   }
 
   handleMark = () => {
-    const id = this.props.index;
-    const status = !this.props.status;
-    modifyItemStatus({
-      method :'put',
-      url:id,
-      data:{
-        status
-      }
+    const id = this.props.item.id;
+    const status = !this.props.item.status;
+    requestAPI({
+      method: "put",
+      url: id,
+      data: {
+        status,
+      },
     })
-    this.props.markAction(this.props.index)
+      .then(() => {
+        this.props.markAction(this.props.item);
+      })
+      .catch((err) => {
+        alert("修改失败");
+      });
   };
 
   handleDelete = () => {
-    const { deleteItem, index } = this.props;
-    deleteItem(index);
+    const id = this.props.item.id;
+    requestAPI({
+      method: "delete",
+      url: id,
+    });
+    this.props.deleteAction(this.props.item);
   };
 }
 
