@@ -38,10 +38,12 @@ class ToDoItem extends Component {
   handleMark = () => {
     const id = this.props.item.id;
     const status = !this.props.item.status;
+    const content = this.props.item.content;
     requestAPI({
       method: "put",
-      url: id,
+      url: "/"+id,
       data: {
+        content,
         status,
       },
     })
@@ -57,7 +59,7 @@ class ToDoItem extends Component {
     const id = this.props.item.id;
     requestAPI({
       method: "delete",
-      url: id,
+      url: "/" + id,
     });
     this.props.deleteAction(this.props.item);
   };
