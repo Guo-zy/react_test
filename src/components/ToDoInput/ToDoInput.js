@@ -45,7 +45,6 @@ class ToDoInput extends React.Component {
 
   render() {
     return (
-      <div>
         <Search
         style ={{width : "50%"}}
           placeholder="input should not be null"
@@ -55,7 +54,6 @@ class ToDoInput extends React.Component {
           onSearch={this.handleInputSub}
           onChange={this.handleInputChange}
         />
-      </div>
     );
   }
 }

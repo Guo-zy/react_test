@@ -17,9 +17,7 @@ class ToDoItem extends Component {
           onClick={this.handleMark}
         >
           {content}
-       
         </span>
-        
 
         <Button
           type="danger"
@@ -36,12 +34,6 @@ class ToDoItem extends Component {
       </div>
     );
   }
-
-  // handleToggle = () => {
-  //   requestAPI({}).then((result) => {
-  //     console.log(result);
-  //   });
-  // };
 
   handleMark = () => {
     const id = this.props.item.id;

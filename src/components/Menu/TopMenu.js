@@ -2,18 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
 
+//TODO bug
 class TopMenu extends React.Component {
   state = {
     current: "All",
   };
   handleClick = e => {
-    console.log('click ', e);
     this.setState({
       current: e.key,
     });
   };
-
-
   render() {
     return (
       <Menu

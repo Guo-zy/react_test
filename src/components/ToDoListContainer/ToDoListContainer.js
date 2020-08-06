@@ -2,15 +2,15 @@ import ToDoInput from "../ToDoInput/ToDoInput";
 import ToDoList from "../ToDoList/ToDoList";
 import Menu from "../Menu/TopMenu";
 import React from "react";
-import { connect } from "react-redux";
+import { requestAPI } from "../../network/index";
+import { Layout } from "antd";
 import {
   addAction,
   deleteAction,
   markAction,
   getAllItemAction,
 } from "../../store/action/actionCreators";
-import { requestAPI } from "../../network/index";
-import { Layout } from "antd";
+import { connect } from "react-redux";
 const { Content } = Layout;
 class ToDoListContainer extends React.Component {
   componentDidMount() {
@@ -37,17 +37,16 @@ class ToDoListContainer extends React.Component {
             list={this.props.list}
             deleteAction={this.props.deleteAction}
             markAction={this.props.markAction}
-            loading = {this.props.loading}
+            loading={this.props.loading}
           />
         </Layout>
       </div>
     );
   }
 }
-
 const mapStateToProps = (state) => ({
-  list : state.toDo.list,
-  loading : state.loadToggle.loading
+  list: state.toDo.list,
+  loading: state.loadToggle.loading,
 });
 
 const mapDispatchToProps = {

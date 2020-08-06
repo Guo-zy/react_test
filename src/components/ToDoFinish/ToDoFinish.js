@@ -6,6 +6,7 @@ import {
   deleteAction,
   markAction,
 } from "../../store/action/actionCreators";
+// TODO bug
 class ToDoFinish extends React.Component {
   getDoneItem = () => {
     const doneList = this.props.list.filter((item) => item.status);
@@ -14,6 +15,7 @@ class ToDoFinish extends React.Component {
         list={doneList}
         deleteAction={this.props.deleteAction}
         markAction={this.props.markAction}
+        loading={this.props.loading}
       />
     );
   };
@@ -27,15 +29,18 @@ class ToDoFinish extends React.Component {
     );
   }
 }
-
+//TODO bug
 const mapStateToProps = (state) => {
-  return state.itemList;
+  return {
+    list:state.toDo.list,
+    loading : state.loadToggle.loading
+  };
 };
 
 const mapDispatchToProps = {
   deleteAction,
   markAction,
 };
-
+//TODO add proptypes
 
 export default connect(mapStateToProps , mapDispatchToProps)(ToDoFinish);
