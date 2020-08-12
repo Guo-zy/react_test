@@ -41,7 +41,7 @@ class ToDoItem extends Component {
     const content = this.props.item.content;
     requestAPI({
       method: "put",
-      url: "/"+id,
+      url: "/" + id,
       data: {
         content,
         status,
@@ -60,7 +60,13 @@ class ToDoItem extends Component {
     requestAPI({
       method: "delete",
       url: "/" + id,
-    });
+    })
+      .then((res) => {
+       console.log(res);
+      })
+      .catch((err) => {
+        console.log(err)
+      });
     this.props.deleteAction(this.props.item);
   };
 }

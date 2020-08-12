@@ -6,7 +6,7 @@ import {
   deleteAction,
   markAction,
 } from "../../store/action/actionCreators";
-// TODO bug
+import PropTypes from 'prop-types'
 class ToDoFinish extends React.Component {
   getDoneItem = () => {
     const doneList = this.props.list.filter((item) => item.status);
@@ -42,5 +42,12 @@ const mapDispatchToProps = {
   markAction,
 };
 //TODO add proptypes
+
+ToDoFinish.propTypes = {
+  deleteAction : PropTypes.func.isRequired,
+  markAction : PropTypes.func.isRequired,
+  loading : PropTypes.bool.isRequired,
+  
+}
 
 export default connect(mapStateToProps , mapDispatchToProps)(ToDoFinish);

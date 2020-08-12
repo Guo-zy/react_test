@@ -12,6 +12,7 @@ class ToDoList extends Component {
         dataSource={this.props.list}
         renderItem={(item) => (
           <List.Item  >
+            {/* todo beautify*/}
             <ToDoItem
               key={item.id}   
               item={item}

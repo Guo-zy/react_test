@@ -11,6 +11,7 @@ import {
   getAllItemAction,
 } from "../../store/action/actionCreators";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 const { Content } = Layout;
 class ToDoListContainer extends React.Component {
   componentDidMount() {
@@ -44,6 +45,14 @@ class ToDoListContainer extends React.Component {
     );
   }
 }
+
+ToDoListContainer.propTypes = {
+  deleteAction : PropTypes.func.isRequired,
+  markAction : PropTypes.func.isRequired,
+  addAction : PropTypes.func.isRequired,
+  loading : PropTypes.bool.isRequired,
+}
+
 const mapStateToProps = (state) => ({
   list: state.toDo.list,
   loading: state.loadToggle.loading,
